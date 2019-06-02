@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jt.mapper.ItemMapper">
+
+	<!--配置文件写法!!注解和配置文件只能写一个 -->
+	<!-- <select id="selectItemByPage" resultType="Item"> select * from tb_item 
+		order by updated desc limit #{start},#{rows} </select> -->
+
+
+	<!--测试删除操作 -->
+	<delete id="deteleItems">
+		delete from tb_item where id in (
+		<foreach collection="list" item="id" 
+			separator=",">
+			#{id}
+		</foreach>
+		)
+	</delete>
+</mapper>
